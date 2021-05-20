@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.services.core.mapper.ReplayMapper">
+
+    <resultMap id="BaseResultMap" type="com.services.core.entity.Replay">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+            <result property="appName" column="app_name" jdbcType="VARCHAR"/>
+            <result property="environment" column="environment" jdbcType="VARCHAR"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="repeatId" column="repeat_id" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="traceId" column="trace_id" jdbcType="VARCHAR"/>
+            <result property="cost" column="cost" jdbcType="BIGINT"/>
+            <result property="diffResult" column="diff_result" jdbcType="VARCHAR"/>
+            <result property="response" column="response" jdbcType="VARCHAR"/>
+            <result property="mockInvocation" column="mock_invocation" jdbcType="VARCHAR"/>
+            <result property="success" column="success" jdbcType="BIT"/>
+            <result property="recordId" column="record_id" jdbcType="BIGINT"/>
+            <result property="batch" column="batch" jdbcType="BIT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,gmt_create,gmt_modified,
+        app_name,environment,ip,
+        repeat_id,status,trace_id,
+        cost,diff_result,response,
+        mock_invocation,success,record_id,batch
+    </sql>
+
+    <select id="pageByParams" resultType="com.services.core.entity.Replay">
+        select
+        id,gmt_create,gmt_modified,
+        app_name,environment,ip,
+        repeat_id,status,trace_id,
+        cost,diff_result,response,
+        mock_invocation,success,record_id
+        from replay
+        where 1=1
+        <if test="appName != null and  appName != ''">
+            and app_name = #{appName}
+        </if>
+        <if test="repeatId != null and  repeatId != '' ">
+            and repeat_id = #{repeatId}
+        </if>
+        order by id desc
+    </select>
+</mapper>

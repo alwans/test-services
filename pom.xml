@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <name>test-services</name>
+
+    <groupId>test-services</groupId>
+    <artifactId>test-services</artifactId>
+    <version>1.0.0</version>
+
+    <modules>
+        <module>test-common-util</module>
+        <module>test-sandbox-aide</module>
+        <module>test-commons</module>
+        <module>test-services-core</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <properties>
+        <test.services.version>1.0.0</test.services.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <common.io.version>2.4</common.io.version>
+        <zip4j.version>2.7.0</zip4j.version>
+        <fastjson.version>1.2.75</fastjson.version>
+        <httpClient.version>4.3.6</httpClient.version>
+        <commons.lang3.version>3.4</commons.lang3.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
+        <mysql.version>5.1.42</mysql.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>test-services</groupId>
+                <artifactId>test-common-util</artifactId>
+                <version>${test.services.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>test-services</groupId>
+                <artifactId>test-commons</artifactId>
+                <version>${test.services.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${common.io.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j -->
+            <dependency>
+                <groupId>net.lingala.zip4j</groupId>
+                <artifactId>zip4j</artifactId>
+                <version>${zip4j.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpClient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.jvm.sandbox</groupId>
+                <artifactId>repeater-plugin-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.jvm.sandbox</groupId>
+                <artifactId>repeater-plugin-core</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

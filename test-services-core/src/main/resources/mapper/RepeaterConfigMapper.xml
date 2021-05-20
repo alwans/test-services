@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.services.core.mapper.RepeaterConfigMapper">
+
+    <resultMap id="BaseResultMap" type="com.services.core.entity.RepeaterConfig">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="sandboxId" column="sandboxId" jdbcType="INTEGER"/>
+            <result property="env" column="env" jdbcType="VARCHAR"/>
+            <result property="appName" column="appName" jdbcType="VARCHAR"/>
+            <result property="config" column="config" jdbcType="VARCHAR"/>
+            <result property="isDelete" column="isDelete" jdbcType="BOOLEAN"/>
+            <result property="operator" column="operator" jdbcType="VARCHAR"/>
+            <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+            <result property="modifyTime" column="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,sandboxId,env,
+        appName,config,isDelete,
+        operator,createTime,modifyTime
+    </sql>
+
+    <select id="pageByParams" resultType="com.services.core.entity.RepeaterConfig">
+        select id,sandboxId,env,
+        appName,config,isDelete,
+        operator,createTime,modifyTime
+        from repeater_config
+        where isDelete = false
+        <if test="env != null and  env != ''">
+            and env = #{env}
+        </if>
+        <if test="appName != null and  appName != ''">
+            and appName = #{appName}
+        </if>
+    </select>
+
+    <select id="selectByPidAndPort" resultType="com.services.core.entity.RepeaterConfig">
+        select a.id,a.sandboxId,a.env,
+        a.appName,a.config,a.isDelete,
+        a.operator,a.createTime,a.modifyTime
+        from repeater_config a
+        inner join sandbox_info b on a.sandboxId = b.id
+        where a.isDelete = false
+        <if test="serverPid != null and  serverPid != 0">
+            and b.serverPid = #{serverPid}
+        </if>
+        <if test="sandboxPort != null and  sandboxPort != 0 ">
+            and b.sandboxPort = #{sandboxPort}
+        </if>
+    </select>
+</mapper>

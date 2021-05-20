@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.services.core.mapper.SandboxInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.services.core.entity.SandboxInfo">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="env" column="env" jdbcType="VARCHAR"/>
+            <result property="host" column="host" jdbcType="VARCHAR"/>
+            <result property="serverName" column="serverName" jdbcType="VARCHAR"/>
+            <result property="serverPid" column="serverPid" jdbcType="INTEGER"/>
+            <result property="aideServerPort" column="aideServerPort" jdbcType="INTEGER"/>
+            <result property="sandboxNameSpace" column="sandboxNameSpace" jdbcType="VARCHAR"/>
+            <result property="sandboxPort" column="sandboxPort" jdbcType="INTEGER"/>
+            <result property="sandboxStatus" column="sandboxStatus" jdbcType="BOOLEAN"/>
+            <result property="token" column="token" jdbcType="VARCHAR"/>
+            <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+            <result property="modifyTime" column="modifyTime" jdbcType="TIMESTAMP"/>
+            <result property="operator" column="operator" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,env,host,
+        serverName,serverPid,aideServerPort,
+        sandboxNameSpace,sandboxPort,sandboxStatus,
+        token,createTime,modifyTime,
+        operator
+    </sql>
+    <select id="pageByParams" resultType="com.services.core.entity.SandboxInfo">
+        select id, env, host, serverName, serverPid, aideServerPort,
+               sandboxNameSpace, sandboxPort, sandboxStatus, token,
+               createTime, modifyTime, operator
+        from sandbox_info
+        where 1=1
+        <if test="env != null and  env != ''">
+            and env = #{env}
+        </if>
+        <if test="host != null and  host != ''">
+            and host = #{host}
+        </if>
+        <if test="serverName != null and  serverName != ''">
+            and serverName = #{serverName}
+        </if>
+    </select>
+</mapper>
