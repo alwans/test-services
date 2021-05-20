@@ -176,7 +176,7 @@ public class WebsiteSandboxController {
     }
 
     /**
-     * 更新模块的记载状态 ： 加载|卸载 （不记得aide服务有没有实现对应的功能）
+     * 更新模块的记载状态 ： 加载|卸载 (还没实现)
      * @param id sandbox id
      * @param moduleId 模块id
      * @param state 更新后的状态
