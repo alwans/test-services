@@ -54,10 +54,12 @@ private void setSystemProp(){
 >*默认端口 : 12309*
 
 ## 部署流程
-> *1.通过nginx部署website; dist.zip -> path : [test-core-service/src/resource/dis.zip](https://github.com/alwans/test-services/blob/master/test-services-core/src/main/resources/application.properties)*  
+> *1.启动被测Demo应用：jvmTest path : [test-core-services/src/main/resource/jvmTestxxx.jar](https://github.com/alwans/test-services/blob/master/test-services-core/src/main/resources/jvmTest-0.0.1-SNAPSHOT.jar)* *java -jar jvmTestxxx.jar*
 
-> *2.启动 test-core-services服务*  *java -jar test-services-core-1.0.0.jar*  
+> *2.通过nginx部署website; dist.zip -> path : [test-core-service/src/resource/dis.zip](https://github.com/alwans/test-services/blob/master/test-services-core/src/main/resources/dist.zip)*  
 
-> *3.web页面新增sandbox配置*  
+> *3.启动 test-core-services服务*  *java -jar test-services-core-1.0.0.jar*  
+
+> *4.web页面新增sandbox配置*  
 
 > *4.启动aide服务*  ***java -jar -Djava.ext.dirs=${JAVA_HOME}/jre/lib/ext:${JAVA_HOME}/lib/ test-sandbox-aide-1.0.0.jar***  
